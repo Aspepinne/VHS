@@ -65,7 +65,7 @@ namespace VHSApi.Web.Repository
             parameters.AddVarChar("@Vin", 50, vin);
             parameters.AddBoolean("@AlarmStatus", alarmStatus);
 
-            DbAccess.ExecuteNonQuery("dbo.sVehicle_BatteryLevel", ref parameters, CommandType.StoredProcedure);
+            DbAccess.ExecuteNonQuery("dbo.sVehicle_AlarmStatus", ref parameters, CommandType.StoredProcedure);
 
 
         }
@@ -193,7 +193,7 @@ namespace VHSApi.Web.Repository
             var parameters = new SqlParameters();
             parameters.AddVarChar("@Vin", 50, vin);
             parameters.AddDateTime("@Date", date);
-            var dr = DbAccess.ExecuteReader("dbo.sDrivingJournal_GetJournalByStartingTime", ref parameters, CommandType.StoredProcedure);
+            var dr = DbAccess.ExecuteReader("dbo.sDrivingJournal_GetJournalByVinAndDate", ref parameters, CommandType.StoredProcedure);
 
 
             while (dr.Read())
